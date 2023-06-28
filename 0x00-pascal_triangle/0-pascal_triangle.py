@@ -4,7 +4,7 @@ Alx interview
 """
 
 
-def  pascal_triangle(n):
+def pascal_triangle(n):
     """
     Returns a list of list of integers representing the pascal triangle of n
     """
