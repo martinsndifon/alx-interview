@@ -4,6 +4,11 @@
 
 def canUnlockAll(boxes):
     """Main logic"""
+    if type(boxes) is not list:
+        return
+    if not all(type(item) is list for item in boxes):
+            return
+
     n = len(boxes)
     visited = [False] * n
     visited[0] = True
