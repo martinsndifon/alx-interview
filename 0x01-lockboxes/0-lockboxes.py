@@ -1,26 +1,18 @@
 #!/usr/bin/python3
-"""Lockboxes challenge solution"""
+"""ALX InterView Prep."""
 
 
 def canUnlockAll(boxes):
-    """Main logic"""
-    if type(boxes) is not list:
-        return
-    if not all(type(item) is list for item in boxes):
-            return
-
-    n = len(boxes)
-    visited = [False] * n
-    visited[0] = True
-
-    def dfs(box):
-        """depth-first search algorithm"""
-        visited[box] = True
-        for key in boxes[box]:
-            if not visited[key]:
-                dfs(key)
-
-    dfs(0)
-
-    # check if all boxes were visited
-    return all(visited)
+    """Return true if all the boxes in list boxes can be open."""
+    lock = {}
+    keys = set(boxes[0])
+    for i in range(1, len(boxes)):
+        if i in keys:
+            keys |= set(boxes[i])
+        else:
+            lock[i] = boxes[i]
+    for k in list(lock.keys()):
+        if k in keys:
+            keys |= set(lock[k])
+            del lock[k]
+    return len(lock) == 0
