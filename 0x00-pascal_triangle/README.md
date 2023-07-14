@@ -5,7 +5,7 @@ Returns an empty list if n <= 0
 You can assume n will be always an integer
 
 ```bash
-guillaume@ubuntu:~/0x00$ cat 0-main.py
+martins@ubuntu:~/0x00-pascal_triangle$ cat 0-main.py
 #!/usr/bin/python3
 """
 0-main
@@ -23,12 +23,12 @@ def print_triangle(triangle):
 if __name__ == "__main__":
     print_triangle(pascal_triangle(5))
 
-guillaume@ubuntu:~/0x00$ 
-guillaume@ubuntu:~/0x00$ ./0-main.py
+martins@ubuntu:~/0x00-pascal_triangle$ 
+martins@ubuntu:~/0x00-pascal_triangle$ ./0-main.py
 [1]
 [1,1]
 [1,2,1]
 [1,3,3,1]
 [1,4,6,4,1]
-guillaume@ubuntu:~/0x00$ 
+martins@ubuntu:~/0x00-pascal_triangle$ 
 ```
