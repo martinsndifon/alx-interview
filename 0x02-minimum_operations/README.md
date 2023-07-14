@@ -14,3 +14,26 @@ n = 9
 H => Copy All => Paste => HH => Paste =>HHH => Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
 
 Number of operations: 6
+
+```bash
+martins@ubuntu:~/0x02-minoperations$ cat 0-main.py
+#!/usr/bin/python3
+"""
+Main file for testing
+"""
+
+minOperations = __import__('0-minoperations').minOperations
+
+n = 4
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+
+n = 12
+print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+
+martins@ubuntu:~/0x02-minoperations$
+
+martins@ubuntu:~/0x02-minoperations$ ./0-main.py
+Min # of operations to reach 4 char: 4
+Min # of operations to reach 12 char: 7
+martins@ubuntu:~/0x02-minoperations$
+```
