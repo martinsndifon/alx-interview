@@ -30,27 +30,24 @@ def print_metrics(total_size, status_codes_count):
         print(f"{status_code}: {status_codes_count[status_code]}")
 
 
-def main():
-    """main entry"""
-    total_size = 0
-    status_codes_count = defaultdict(int)
-    line_number = 0
-
-    try:
-        for line in sys.stdin:
-            line_number += 1
-
-            file_size, status_code = process_line(line)
-            if file_size is None or status_code is None:
-                continue
-
-            total_size += file_size
-            status_codes_count[status_code] += 1
-
-            if line_number % 10 == 0:
-                print_metrics(total_size, status_codes_count)
-    finally:
-        print_metrics(total_size, status_codes_count)
 
 
-main()
+total_size = 0
+status_codes_count = defaultdict(int)
+line_number = 0
+
+try:
+    for line in sys.stdin:
+        line_number += 1
+
+        file_size, status_code = process_line(line)
+        if file_size is None or status_code is None:
+            continue
+
+        total_size += file_size
+        status_codes_count[status_code] += 1
+
+        if line_number % 10 == 0:
+            print_metrics(total_size, status_codes_count)
+finally:
+    print_metrics(total_size, status_codes_count)
