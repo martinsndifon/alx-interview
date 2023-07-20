@@ -49,9 +49,8 @@ def main():
 
             if line_number % 10 == 0:
                 print_metrics(total_size, status_codes_count)
-    except KeyboardInterrupt:
+    finally:
         print_metrics(total_size, status_codes_count)
-        sys.exit(0)
 
 
 main()
