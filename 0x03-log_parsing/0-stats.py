@@ -7,7 +7,7 @@ from collections import defaultdict
 
 def process_line(line):
     """split every line to capture needed output"""
-    parts = line.strip('\n').split()
+    parts = line.strip().split()
     if len(parts) != 9:
         return None, None
 
