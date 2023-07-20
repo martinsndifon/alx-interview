@@ -21,6 +21,7 @@ def process_line(line):
 
     return file_size, status_code
 
+
 def print_metrics(total_size, status_codes_count):
     """print the metric to stdout"""
     print(f"File size: {total_size}")
@@ -53,5 +54,4 @@ def main():
         sys.exit(0)
 
 
-if __name__ == "__main__":
-    main()
+main()
