@@ -1,9 +1,12 @@
 #!/usr/bin/python3
-"""ALX SE module"""
+"""UTF-8 validation module"""
 
 
 def validUTF8(data):
     """Determines if the given data is a valid UTF-8 encoding"""
+    if type(data) is not list:
+        return
+
     if any(val < 0 or val >= 256 for val in data):
         return False
 
