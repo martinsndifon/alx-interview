@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-
+"""a module to test with"""
 
 def b22(j, data):
+    """a test info to test with"""
     return j+1 < len(data) and data[j+1] > 127 \
         and data[j+1] < 192
 
 
 def validUTF8(data):
+    """another test info to test with"""
     if isinstance(data, list) and len(data):
         ln = len(data)
         j = 0
