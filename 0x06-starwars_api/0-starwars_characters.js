@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const axios = require('axios');
+const request = require('request');
 
 if (process.argv.length != 3) {
   console.log("Usage: ./0-starwars_characters.js <n>");
@@ -13,26 +13,30 @@ if (isNaN(id)) {
 }
 
 const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
-
-async function fetchData() {
-  try {
-    const response = await axios.get(url)
-    const responseData = response.data;
-    const characters = responseData.characters;
-
-    for (const character of characters) {
-      try {
-        const response = await axios.get(character);
-        const body = response.data;
-        const name = body.name;
-        console.log(name);
-      } catch (error) {
-         console.error(error);
+request.get(url, (error, response, body) => {
+  if (error) {
+    console.error('Error', error);
+  } else {
+    try {
+      const parsedBody = JSON.parse(body);
+      const characters = parsedBody.characters;
+      for (const character of characters) {
+        request.get(character, (error, response, body) => {
+          if (error) {
+            console.error('Error', error);
+          } else {
+            try {
+              const pBody = JSON.parse(body);
+              const name = pBody.name;
+              console.log(name);
+            } catch (parseError) {
+              console.error(parseError);
+            }
+          }
+        });
       }
+    } catch (parseError) {
+      console.error(parseError);
     }
-  } catch (parseError) {
-    console.error(parseError);
   }
-}
-
-fetchData();
+});
