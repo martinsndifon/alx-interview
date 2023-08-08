@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const axios = require('axios');
+const request = require('request');
 
 if (process.argv.length !== 3) {
   console.log('Usage: ./0-starwars_characters.js <n>');
@@ -12,27 +12,31 @@ if (isNaN(id)) {
   process.exit(1);
 }
 
-const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
-
-async function fetchData () {
-  try {
-    const response = await axios.get(url);
-    const responseData = response.data;
-    const characters = responseData.characters;
-
-    for (const character of characters) {
-      try {
-        const response = await axios.get(character);
-        const body = response.data;
-        const name = body.name;
-        console.log(name);
-      } catch (error) {
-        console.error(error);
+function promiseRequest(url) {
+  return new Promise((resolve, reject) => {
+    request.get(url, (error, response, body) => {
+      if (error) {
+        reject(error);
       }
-    }
-  } catch (parseError) {
-    console.error(parseError);
-  }
+      resolve(JSON.parse(body));
+    });
+  });
 }
 
-fetchData();
+async function printChars() {
+  const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
+  try {
+    const response = await promiseRequest(url);
+    const characters = response.characters;
+    for (const character of characters) {
+      const body = await promiseRequest(character);
+      const name = body.name;
+      console.log(name);
+    }
+  } catch (err) {
+    console.error(err)
+  }
+
+}
+
+printChars()
