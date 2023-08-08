@@ -12,7 +12,7 @@ if (isNaN(id)) {
   process.exit(1);
 }
 
-function promiseRequest(url) {
+function promiseRequest (url) {
   return new Promise((resolve, reject) => {
     request.get(url, (error, response, body) => {
       if (error) {
@@ -23,7 +23,7 @@ function promiseRequest(url) {
   });
 }
 
-async function printChars() {
+async function printChars () {
   const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
   try {
     const response = await promiseRequest(url);
@@ -34,9 +34,8 @@ async function printChars() {
       console.log(name);
     }
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
-
 }
 
-printChars()
+printChars();
