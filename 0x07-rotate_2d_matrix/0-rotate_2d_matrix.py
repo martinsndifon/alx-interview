@@ -3,7 +3,11 @@
 
 
 def rotate_2d_matrix(matrix):
-    """Rotate a 2D matrix"""
+    """
+    Rotate a 2D matrix
+    r = right, l = left
+    t = top, b = bottom
+    """
     l, r = 0, len(matrix) - 1
 
     while l < r:
