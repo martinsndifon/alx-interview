@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """ALX SE interview module"""
 
+
 def makeChange(coins, total):
     """Return the fewest number of coins needed to meet total"""
+    if total <= 0:
+        return 0
     sorted_coins = sorted(coins, reverse=True)
     count = 0
     i = 0
