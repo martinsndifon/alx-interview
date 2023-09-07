@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """ALX SE Prime Game"""
-from typing import List, Union
 
 
-def prime_nums_in_range(start: int, end: int) -> List:
+def prime_nums_in_range(start, end):
     """Finds and returns all the prime numbers in a range"""
     prime_numbers = []
 
@@ -20,7 +19,7 @@ def prime_nums_in_range(start: int, end: int) -> List:
     return prime_numbers
 
 
-def isWinner(x: int, nums: List) -> Union[str, None]:
+def isWinner(x, nums):
     """Returns the name of the winner that won the most rounds"""
     maria, ben = 0, 0
     for i in range(x):
