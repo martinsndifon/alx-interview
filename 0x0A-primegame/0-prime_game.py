@@ -21,9 +21,12 @@ def prime_nums_in_range(start, end):
 
 def isWinner(x, nums):
     """Returns the name of the winner that won the most rounds"""
+    if not x or not nums:
+        return None
+
     maria_score, ben_score = 0, 0
-    for i in range(x):
-        result = prime_nums_in_range(1, nums[i])
+    for rounds in range(x):
+        result = prime_nums_in_range(1, nums[rounds])
         if len(result) % 2:
             maria_score += 1
         else:
